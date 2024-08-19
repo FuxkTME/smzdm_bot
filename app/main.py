@@ -21,13 +21,14 @@ def load_conf():
         logger.info("Get configration from config.toml")
         conf_kwargs = TomlHelper(CONFIG_FILE).read()
         conf_kwargs.update({"toml_conf": True})
-    elif os.environ.get("ANDROID_COOKIE", None):
+    # elif os.environ.get("ANDROID_COOKIE", None):
+    elif os.environ.get("ANDROID_COOKIE"):
         logger.info("Get configration from env")
         conf_kwargs = {
             "SK": os.environ.get("SK"),
             "ANDROID_COOKIE": os.environ.get("ANDROID_COOKIE"),
-            "PUSH_PLUS_TOKEN": os.environ.get("PUSH_PLUS_TOKEN", None),
-            "SC_KEY": os.environ.get("SC_KEY", None),
+            "PUSH_PLUS_TOKEN": os.environ.get("PUSH_PLUS_TOKEN"),
+            "SC_KEY": os.environ.get("SC_KEY"),
             "TG_BOT_TOKEN": os.environ.get("TG_BOT_TOKEN", None),
             "TG_USER_ID": os.environ.get("TG_USER_ID", None),
             "TG_BOT_API": os.environ.get("TG_BOT_API", None),
